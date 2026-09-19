@@ -1,71 +1,47 @@
 # HVAC Service Management
 
-Next.js business website and service-management application with scheduling, customer records, estimates, and an admin workspace.
+Next.js application combining an HVAC business website with an authenticated workspace for customers, service jobs, estimates, documents and marketing content.
 
-## Project overview
+**Public portfolio source:** [quanleok/hvac-portfolio](https://github.com/quanleok/hvac-portfolio)
 
-**Stack:** Next.js, React, TypeScript and Supabase.
+## Implemented work
 
-**Implemented work:** Business website, service scheduling, customer and job records, and administrative workflows.
+- Responsive business pages, service-area content and contact forms.
+- Customer and service records, document creation, estimates and administrative workflows.
+- Media management and integrations for email, SMS and marketing tools.
+- Supabase authentication, storage and database migrations.
 
-**Status and limits:** Business data, consent records, service credentials, and operational notes must stay private. This repository is not a public sample dataset.
+Built with Next.js 16, React 19, TypeScript, Tailwind CSS 4 and Supabase. This repository is a source portfolio snapshot; running the full application requires your own development services. It does not include deployed accounts or a customer dataset.
 
-## Development documentation
+## Repository guide
 
-Standalone Next.js marketing site for an Oklahoma City area heating and air service business.
+- `app/` contains public pages, admin routes and API handlers.
+- `components/` contains public and administrative interface components.
+- `lib/` contains domain logic, authentication and service integrations.
+- `supabase/migrations/` contains database schema changes.
+- `.env.example` documents configuration with placeholder values.
 
-### Stack
-
-- Next.js 16
-- React 19
-- Tailwind CSS 4
-- App Router
-
-### Local development
+## Local development
 
 ```bash
+npm ci
+cp .env.example .env.local
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in the browser. If that port is in use, Next.js will automatically choose the next available port.
+Open [localhost:3000](http://localhost:3000). Configure a separate development Supabase project and its schema for the admin workflows. Use your own development user and service credentials; this copy does not provide a shared admin login.
 
-### Production checks
+Before testing outbound messages, set your own `CONTACT_RECIPIENT_EMAIL`, allowed `CONTACT_FROM_EMAIL`, `NEXT_PUBLIC_SITE_URL` and provider credentials. The source retains public business branding and some business defaults, so review those settings before running integrations. Optional SMS, OAuth, media and marketing services are described in `.env.example`.
+
+## Checks
 
 ```bash
 npm run lint
 npm run build
 ```
 
-### Contact form setup
+These commands check source quality and compilation. They do not validate live messaging, database permissions or production readiness.
 
-Set these in Vercel when you are ready to deliver form submissions:
+## Source boundary
 
-```bash
-RESEND_API_KEY=your_resend_api_key
-CONTACT_RECIPIENT_EMAIL=contact@example.com
-CONTACT_FROM_EMAIL="Website <onboarding@resend.dev>"
-NEXT_PUBLIC_SITE_URL=https://example.com
-```
-
-Replace the example recipient and site URL with your own values. `CONTACT_FROM_EMAIL` must be a sender allowed by your Resend account and verified domain setup. Keep private workspace notes, credentials, customer records and consent evidence outside the repository.
-
-### What is in place
-
-- Custom homepage for Double Le HVAC
-- Oklahoma City service-area positioning
-- Strong hero, services, trust, coverage, FAQ, and contact sections
-- Mobile sticky call-to-action bar
-- Real business phone number wired in
-- Contact form recipient default wired to the client inbox
-
-### Next recommended pass
-
-- Add client photography or technician/team imagery
-- Tighten copy around real guarantees, financing, and maintenance plans
-- Add dedicated service pages for SEO if needed
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Credentials belong in ignored environment files or a provider secret store. Customer records, consent evidence, private workspace notes, recovery material and admin captures are excluded from this portfolio source and must stay outside Git. Use synthetic records in development. Included public-facing business content is not permission to reuse private business data or third-party media.
